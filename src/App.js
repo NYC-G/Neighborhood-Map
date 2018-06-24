@@ -16,7 +16,8 @@ class App extends Component {
       sidebarActive: 'active',
       buttonActive: true,
       infoWindowActive: false,
-      filterFocused: false
+      filterFocused: false,
+      errorText: false
     }
 
     this.toggleSidebar = this.toggleSidebar.bind(this);
@@ -50,6 +51,7 @@ class App extends Component {
           // set the picture on every location
           places[i].picture = pictureUrl;
         }).catch(error => {
+          this.setState({errorText: "Error in calling Foursquare API"});
           console.error(error);
         })
       }
@@ -145,6 +147,7 @@ class App extends Component {
         <main id="content">
           <Navbar
             buttonState={this.state.buttonActive}
+            errorText={this.state.errorText}
             onButtonClicked={this.toggleSidebar} />
           <MapDiv
             google={this.props.google}

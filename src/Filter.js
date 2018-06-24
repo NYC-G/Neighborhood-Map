@@ -22,7 +22,7 @@ class Filter extends Component {
   }
 
   componentDidUpdate() {
-    // focus searchinput when filter is shown 
+    // focus searchinput when filter is shown
     if (this.props.filterFocused) {
       ReactDOM.findDOMNode(this.refs.searchInput).focus();
     }
@@ -32,13 +32,13 @@ class Filter extends Component {
     return (
       <section className="col">
         <div className="input-group">
-          <input
-            type="text"
-            id="search-input"
-            ref="searchInput"
-            className="form-control"
-            placeholder="Filter location..."
-            onChange={this.handleChange} />
+          <input type="text"
+          id="search-input"
+          ref="searchInput"
+          className="form-control"
+          aria-label="Filter location"
+          placeholder="Filter location..."
+          onChange={this.handleChange} />
           <span className="input-group-addon">Filter</span>
         </div>
       </section>

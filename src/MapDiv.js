@@ -6,6 +6,7 @@ class MapDiv extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      loadingText: "Loading Map..",
       map: null,
       infoWindow: null,
       markers: [],
@@ -20,6 +21,14 @@ class MapDiv extends Component {
     this.markerClicked = this.markerClicked.bind(this);
     this.showInfoWindow = this.showInfoWindow.bind(this);
   };
+
+  componentDidMount() {
+    setTimeout( () => {
+      if (this.props.google == undefined) {
+        this.setState({loadingText: "Could not load Google Maps"});
+      }
+    }, 1000);
+  }
 
   componentDidUpdate(prevProps) {
     // make sure to load it only if changes happen
@@ -176,7 +185,7 @@ class MapDiv extends Component {
       <section
         ref="map"
         role="presentation"
-        style={this.state.mapStyle}>Loading Map..</section>
+        style={this.state.mapStyle}>{this.state.loadingText}</section>
     )
   }
 }

@@ -26,6 +26,7 @@ class Navbar extends Component {
                   </button>
               </div>
               <h3 className="title">Map of Museums in Manhattan</h3>
+              <h4 className="error">{this.props.errorText}</h4>
           </header>
       </nav>
     )
