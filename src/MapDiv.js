@@ -23,6 +23,7 @@ class MapDiv extends Component {
   };
 
   componentDidMount() {
+    window.gm_authFailure = this.gm_authFailure;
     setTimeout( () => {
       if (this.props.google == undefined) {
         this.setState({loadingText: "Could not load Google Maps"});
@@ -36,7 +37,11 @@ class MapDiv extends Component {
       this.initMap();
     }
   }
-
+  
+gm_authFailure(){
+    window.alert("Google Maps error!")
+}
+  
   initMap() {
     // get google to interact with it directly
     const google = this.props.google;
